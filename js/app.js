@@ -129,8 +129,8 @@ function initEstimator() {
       `🔢 *Unidades:* ${units}%0A` +
       `🪟 *Vidrio:* ${glassNames[ESTIMATOR_DATA.glass]}%0A` +
       `🎨 *Acabado:* ${finishNames[ESTIMATOR_DATA.finish]}%0A` +
-      `💶 *Rango estimado:* ${minVal}€ - ${maxVal}€%0A%0A` +
-      `Por favor, contactadme para concertar medición técnica en mi domicilio. Gracias!`;
+      `💶 *Rango orientativo web:* ${minVal}€ - ${maxVal}€ (sujeto a medición en obra)%0A%0A` +
+      `Por favor, contactadme para concertar una visita técnica sin compromiso para tomar medidas y presupuesto definitivo. Gracias!`;
 
     if (whatsappBtn) {
       whatsappBtn.href = `https://wa.me/${URTAIN_CONTACT.phoneRaw}?text=${text}`;
