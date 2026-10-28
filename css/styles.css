@@ -1,85 +1,87 @@
 /* ===================================================================
-   CARPINTERÍA DE ALUMINIO URTAIN - STYLESHEET
-   Aesthetics inspired by top-starred GitHub showcase & landing pages
+   CARPINTERÍA URTAIN - OFFICIAL CORPORATE STYLESHEET
+   Official Brand Colors: Urtain Racing Red (#E50914), Onyx Carbon, Crisp White
    =================================================================== */
 
 :root {
-  --urtain-navy-950: #0a0f1d;
-  --urtain-navy-900: #0f172a;
-  --urtain-navy-800: #1e293b;
-  --urtain-blue-600: #2563eb;
-  --urtain-blue-500: #3b82f6;
-  --urtain-cyan-400: #38bdf8;
-  --urtain-amber-500: #f59e0b;
-  --urtain-emerald-500: #10b981;
+  --urtain-red-600: #e50914;
+  --urtain-red-500: #ef233c;
+  --urtain-red-700: #b90710;
+  --urtain-black-950: #090a0d;
+  --urtain-black-900: #101116;
+  --urtain-black-800: #171821;
+  --urtain-card-bg: rgba(23, 24, 33, 0.78);
+  --urtain-border: rgba(255, 255, 255, 0.09);
+  --urtain-border-red: rgba(229, 9, 20, 0.4);
 }
 
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #090a0d;
+  color: #f4f4f5;
 }
 
-/* Glassmorphism Classes */
+/* Glassmorphism with Red & Carbon Accents */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(16, 17, 22, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--urtain-border);
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--urtain-card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--urtain-border);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 20px 30px -10px rgba(2, 132, 199, 0.2);
+  border-color: rgba(229, 9, 20, 0.5);
+  box-shadow: 0 20px 35px -10px rgba(229, 9, 20, 0.18);
 }
 
 .glass-nav {
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(9, 10, 13, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Hero Radial Glow */
-.hero-glow {
+/* Official Card Curved Red Arc Effect */
+.brand-arc-bg {
   position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%);
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100%;
   pointer-events: none;
+  background: radial-gradient(circle at 100% 50%, rgba(229, 9, 20, 0.16) 0%, rgba(229, 9, 20, 0.05) 50%, transparent 75%);
   z-index: 0;
 }
 
 /* Custom Gradients */
 .text-gradient {
-  background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+  background: linear-gradient(135deg, #ffffff 40%, #a1a1aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-accent {
-  background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #60a5fa 100%);
+.text-gradient-red {
+  background: linear-gradient(135deg, #ffffff 0%, #ef233c 60%, #e50914 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Metallic Badges */
-.badge-metallic {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+/* Salamander Gold & Red Badge */
+.salamander-badge {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 244, 245, 0.92) 100%);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 /* Interactive Calculator Option Cards */
@@ -87,19 +89,19 @@ html {
   position: relative;
   cursor: pointer;
   transition: all 0.25s ease;
-  border: 2px solid rgba(51, 65, 85, 0.8);
-  background: rgba(15, 23, 42, 0.6);
+  border: 2px solid rgba(39, 39, 42, 0.9);
+  background: rgba(16, 17, 22, 0.7);
 }
 
 .calc-card-option:hover {
-  border-color: rgba(56, 189, 248, 0.6);
-  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(229, 9, 20, 0.6);
+  background: rgba(24, 25, 33, 0.9);
 }
 
 .calc-card-option.active {
-  border-color: #38bdf8;
-  background: rgba(14, 116, 144, 0.25);
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+  border-color: #e50914;
+  background: rgba(229, 9, 20, 0.14);
+  box-shadow: 0 0 22px rgba(229, 9, 20, 0.28);
 }
 
 .calc-card-option.active .calc-check-badge {
@@ -112,7 +114,7 @@ input[type="range"] {
   width: 100%;
   height: 8px;
   border-radius: 9999px;
-  background: #334155;
+  background: #27272a;
   outline: none;
   transition: background 0.2s;
 }
@@ -123,10 +125,10 @@ input[type="range"]::-webkit-slider-thumb {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #38bdf8;
+  background: #e50914;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
-  border: 3px solid #0f172a;
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.7);
+  border: 3px solid #090a0d;
   transition: transform 0.15s ease;
 }
 
@@ -149,7 +151,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   height: 100%;
   width: 50%;
   overflow: hidden;
-  border-right: 3px solid #38bdf8;
+  border-right: 3px solid #e50914;
   z-index: 10;
 }
 
@@ -161,12 +163,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #0284c7;
+  background: #e50914;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 18px rgba(229, 9, 20, 0.85);
   cursor: ew-resize;
   z-index: 20;
   pointer-events: none;
@@ -179,7 +181,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 @keyframes pulse-border {
   0% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65);
   }
   70% {
     box-shadow: 0 0 0 18px rgba(34, 197, 94, 0);
@@ -189,13 +191,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
   }
 }
 
-/* Subtle Shimmer for High Priority CTAs */
-.btn-shimmer {
+/* Urgent Red Shimmer Button */
+.btn-shimmer-red {
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #e50914 0%, #b90710 100%);
 }
 
-.btn-shimmer::after {
+.btn-shimmer-red::after {
   content: '';
   position: absolute;
   top: -50%;
@@ -205,7 +208,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   background: linear-gradient(
     60deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.25),
     transparent
   );
   transform: rotate(30deg);
@@ -218,10 +221,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
   100% { transform: translateX(100%) rotate(30deg); }
 }
 
-/* Lightbox Modal */
+/* Modal Backdrop */
 .modal-backdrop {
-  background: rgba(10, 15, 29, 0.88);
-  backdrop-filter: blur(12px);
+  background: rgba(7, 8, 10, 0.9);
+  backdrop-filter: blur(14px);
 }
 
 /* Custom Scrollbar */
@@ -230,14 +233,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #090a0d;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #27272a;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #e50914;
 }

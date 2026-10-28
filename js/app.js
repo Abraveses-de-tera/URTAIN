@@ -1,6 +1,6 @@
 /**
- * CARPINTERÍA DE ALUMINIO URTAIN - INTERACTIVE APPLICATION
- * High-performance, zero-dependency client logic
+ * CARPINTERÍA URTAIN - LOGICA OFICIAL DE LA APLICACIÓN
+ * Colores corporativos Rojo & Negro, Perfiles Salamander®, WhatsApp 605 88 38 38
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initModals();
 });
+
+const URTAIN_CONTACT = {
+  phone: '605 88 38 38',
+  phoneRaw: '34605883838',
+  email: 'aluminiosurtain@hotmail.com',
+  address: 'Calle Santiago Nº37, 49624 Abraveses de Tera (Zamora)'
+};
 
 /* ==========================================================================
    1. MOBILE NAVIGATION
@@ -47,17 +54,17 @@ function initMobileMenu() {
    2. INTERACTIVE PRESUPUESTADOR EXPRESS (Quote Estimator)
    ========================================================================== */
 const ESTIMATOR_DATA = {
-  service: 'ventanas',
+  service: 'ventanas-pvc',
   units: 3,
   glass: 'bajo-emisivo',
-  finish: 'antracita',
+  finish: 'blanco',
   rates: {
-    ventanas: { base: 360, name: 'Ventanas Aluminio con RPT' },
-    cerramiento: { base: 1250, name: 'Cerramiento de Terraza / Porche' },
-    puertas: { base: 780, name: 'Puerta de Entrada / Seguridad' },
-    persianas: { base: 175, name: 'Persianas Térmicas / Motorizadas' },
-    mosquiteras: { base: 65, name: 'Mosquiteras a Medida' },
-    metalica: { base: 420, name: 'Carpintería Metálica / Rejas' }
+    'ventanas-pvc': { base: 375, name: 'Ventanas PVC Calidad Salamander®' },
+    'ventanas-aluminio': { base: 390, name: 'Ventanas Aluminio con RPT' },
+    'cerramiento': { base: 1250, name: 'Cerramiento de Terraza / Porche' },
+    'puertas': { base: 790, name: 'Puerta de Entrada / Seguridad' },
+    'persianas': { base: 180, name: 'Persianas Térmicas / Motorizadas' },
+    'mosquiteras': { base: 65, name: 'Mosquiteras a Medida' }
   },
   glassMultiplier: {
     'standard': 1.0,
@@ -86,17 +93,15 @@ function initEstimator() {
   if (!unitsSlider || !priceMinEl) return;
 
   function updateEstimate() {
-    const serviceInfo = ESTIMATOR_DATA.rates[ESTIMATOR_DATA.service];
+    const serviceInfo = ESTIMATOR_DATA.rates[ESTIMATOR_DATA.service] || ESTIMATOR_DATA.rates['ventanas-pvc'];
     const baseRate = serviceInfo.base;
     const units = parseInt(ESTIMATOR_DATA.units, 10);
     const glassMult = ESTIMATOR_DATA.glassMultiplier[ESTIMATOR_DATA.glass] || 1;
     const finishMult = ESTIMATOR_DATA.finishMultiplier[ESTIMATOR_DATA.finish] || 1;
 
-    // Indicative estimation logic
     const singleUnitPrice = baseRate * glassMult * finishMult;
     const totalPrice = singleUnitPrice * units;
     
-    // Spread range +/- 10%
     const minVal = Math.round(totalPrice * 0.92);
     const maxVal = Math.round(totalPrice * 1.08);
 
@@ -107,14 +112,13 @@ function initEstimator() {
       summaryServiceEl.textContent = `${serviceInfo.name} (${units} ${units === 1 ? 'ud.' : 'uds.'})`;
     }
 
-    // Prepare WhatsApp Message
     const glassNames = {
       'standard': 'Doble Climalit estándar',
-      'bajo-emisivo': 'Climalit Bajo Emisivo Térmico',
+      'bajo-emisivo': 'Climalit Bajo Emisivo con Gas Argón',
       'triple': 'Triple Acristalamiento Acústico/Solar'
     };
     const finishNames = {
-      'blanco': 'Blanco Lacado',
+      'blanco': 'Blanco Clásico',
       'antracita': 'Gris Antracita RAL 7016',
       'madera': 'Imitación Madera (Roble/Nogal)',
       'anodizado': 'Anodizado Inox/Plata'
@@ -122,14 +126,14 @@ function initEstimator() {
 
     const text = `Hola Carpintería Urtain! He calculado un presupuesto en vuestra web:%0A%0A` +
       `🛠️ *Servicio:* ${serviceInfo.name}%0A` +
-      `🔢 *Unidades aprox.:* ${units}%0A` +
-      `🪟 *Vidrio/Aislamiento:* ${glassNames[ESTIMATOR_DATA.glass]}%0A` +
+      `🔢 *Unidades:* ${units}%0A` +
+      `🪟 *Vidrio:* ${glassNames[ESTIMATOR_DATA.glass]}%0A` +
       `🎨 *Acabado:* ${finishNames[ESTIMATOR_DATA.finish]}%0A` +
-      `💶 *Estimación estimada:* ${minVal}€ - ${maxVal}€%0A%0A` +
-      `Me gustaría que me contactaseis para concertar una visita/medición sin compromiso. Gracias!`;
+      `💶 *Rango estimado:* ${minVal}€ - ${maxVal}€%0A%0A` +
+      `Por favor, contactadme para concertar medición técnica en mi domicilio. Gracias!`;
 
     if (whatsappBtn) {
-      whatsappBtn.href = `https://wa.me/34619493659?text=${text}`;
+      whatsappBtn.href = `https://wa.me/${URTAIN_CONTACT.phoneRaw}?text=${text}`;
     }
   }
 
@@ -171,7 +175,6 @@ function initEstimator() {
     });
   });
 
-  // Initial Calculation
   updateEstimate();
 }
 
@@ -196,11 +199,8 @@ function initEnergyCalculator() {
       sizeValueDisplay.textContent = `${size} m²`;
     }
 
-    // Benchmark in Zamora climate: approx 35-65 kWh saved per m² per year by upgrading to RPT + Climalit
-    const kwhSaved = Math.round(size * 42 * windowFactor);
-    // Approx energy cost avg 0.14 €/kWh
-    const eurosSaved = Math.round(kwhSaved * 0.155);
-    // Approx 0.25 kg CO2 per kWh
+    const kwhSaved = Math.round(size * 44 * windowFactor);
+    const eurosSaved = Math.round(kwhSaved * 0.16);
     const co2Saved = Math.round(kwhSaved * 0.24);
 
     savingsEuroDisplay.textContent = `${eurosSaved.toLocaleString('es-ES')} €`;
@@ -250,7 +250,6 @@ function initBeforeAfterSlider() {
     isDragging = false;
   });
 
-  // Touch Support for mobile
   container.addEventListener('touchstart', (e) => {
     isDragging = true;
     if (e.touches[0]) setPosition(e.touches[0].clientX);
@@ -278,19 +277,18 @@ function initGalleryFilter() {
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       filterButtons.forEach(b => {
-        b.classList.remove('bg-sky-500', 'text-white', 'shadow-lg', 'shadow-sky-500/25');
-        b.classList.add('bg-slate-800', 'text-slate-300');
+        b.classList.remove('bg-red-600', 'text-white', 'shadow-lg', 'shadow-red-600/30');
+        b.classList.add('bg-zinc-800', 'text-zinc-300');
       });
 
-      btn.classList.add('bg-sky-500', 'text-white', 'shadow-lg', 'shadow-sky-500/25');
-      btn.classList.remove('bg-slate-800', 'text-slate-300');
+      btn.classList.add('bg-red-600', 'text-white', 'shadow-lg', 'shadow-red-600/30');
+      btn.classList.remove('bg-zinc-800', 'text-zinc-300');
 
       const filter = btn.dataset.filter;
 
       galleryItems.forEach(item => {
         if (filter === 'all' || item.dataset.category === filter) {
           item.style.display = 'block';
-          item.classList.add('animate-fadeIn');
         } else {
           item.style.display = 'none';
         }
@@ -315,7 +313,6 @@ function initFaqAccordion() {
     trigger.addEventListener('click', () => {
       const isOpen = !answer.classList.contains('hidden');
 
-      // Close all other items
       faqItems.forEach(other => {
         const otherAnswer = other.querySelector('.faq-answer');
         const otherIcon = other.querySelector('.faq-icon');
@@ -349,30 +346,29 @@ function initContactForm() {
     const name = document.getElementById('form-name')?.value.trim() || '';
     const phone = document.getElementById('form-phone')?.value.trim() || '';
     const email = document.getElementById('form-email')?.value.trim() || '';
-    const location = document.getElementById('form-location')?.value.trim() || 'Benavente y alrededores';
+    const location = document.getElementById('form-location')?.value.trim() || 'Abraveses / Benavente';
     const message = document.getElementById('form-message')?.value.trim() || '';
 
     if (!name || !phone) {
       if (statusMsg) {
         statusMsg.textContent = 'Por favor, introduce al menos tu nombre y un teléfono de contacto.';
-        statusMsg.className = 'text-amber-400 font-medium text-sm mt-3';
+        statusMsg.className = 'text-amber-400 font-semibold text-xs mt-3';
       }
       return;
     }
 
-    // Direct WhatsApp Bridge
-    const waText = `*Nueva Solicitud de Presupuesto Web - Urtain*%0A%0A` +
+    const waText = `*Nueva Consulta Web - Carpintería Urtain*%0A%0A` +
       `👤 *Nombre:* ${name}%0A` +
       `📞 *Teléfono:* ${phone}%0A` +
       `📧 *Email:* ${email || 'No indicado'}%0A` +
       `📍 *Localidad:* ${location}%0A` +
       `📝 *Mensaje:* ${message}%0A`;
 
-    window.open(`https://wa.me/34619493659?text=${waText}`, '_blank');
+    window.open(`https://wa.me/${URTAIN_CONTACT.phoneRaw}?text=${waText}`, '_blank');
 
     if (statusMsg) {
-      statusMsg.textContent = '✓ Redirigiendo a WhatsApp para confirmar los detalles directamente con el taller...';
-      statusMsg.className = 'text-emerald-400 font-medium text-sm mt-3';
+      statusMsg.textContent = '✓ Redirigiendo a WhatsApp para atenderte de inmediato...';
+      statusMsg.className = 'text-emerald-400 font-semibold text-xs mt-3';
     }
 
     form.reset();

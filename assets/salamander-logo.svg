@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Salamander / Lizard Silhouette -->
+  <g transform="translate(10, 8) scale(0.68)">
+    <path d="M42 8 C39 8 36 12 36 16 C36 19 38 22 41 24 C40 29 37 34 33 38 C28 35 22 36 18 40 C14 44 14 50 18 53 C21 52 23 50 24 47 C26 44 30 43 34 45 C35 50 37 57 41 63 C36 67 29 70 24 74 C19 78 18 84 21 89 C24 93 30 94 34 90 C38 86 39 81 37 77 C41 73 46 69 50 64 C53 69 58 74 63 77 C61 81 62 86 66 90 C70 94 76 93 79 89 C82 84 81 78 76 74 C71 70 64 67 59 63 C63 57 65 50 66 45 C70 43 74 44 76 47 C77 50 79 52 82 53 C86 50 86 44 82 40 C78 36 72 35 67 38 C63 34 60 29 59 24 C62 22 64 19 64 16 C64 12 61 8 58 8 C54 8 51 11 50 14 C49 11 46 8 42 8 Z M50 68 C48 76 45 85 41 93 C36 102 33 112 34 122 C35 128 39 133 45 131 C51 129 53 123 51 117 C49 110 50 102 54 94 C57 86 59 78 57 70 C54 69 52 69 50 68 Z" fill="#111111" />
+  </g>
+  <!-- Wordmark SALAMANDER -->
+  <text x="82" y="52" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="900" letter-spacing="3" fill="#111111">
+    SALAMANDER
+  </text>
+  <text x="83" y="68" font-family="'Inter', sans-serif" font-size="9" font-weight="700" letter-spacing="2.2" fill="#e50914">
+    WINDOW &amp; DOOR SYSTEMS · ALEMANIA
+  </text>
+</svg>
